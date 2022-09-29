@@ -1,0 +1,62 @@
+# Compose schema version
+version: '3.3'
+
+# Setup network
+networks:
+  default:
+    name: fedn_default
+services:
+  client1:
+    environment:
+      - GET_HOSTS_FROM=dns
+    build:
+      context: .
+      args:
+        BASE_IMG: ${BASE_IMG:-python:3.9-slim}
+    working_dir: /app
+    extra_hosts:
+      - combiner1: 35.244.111.168
+      - combiner2: 35.244.69.133
+    volumes:
+      - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - "/venv/bin/pip install --no-cache-dir -e /app/fedn && /venv/bin/fedn run client -in config/settings-client.yaml"
+    deploy:
+      replicas: 0
+  client2:
+    environment:
+      - GET_HOSTS_FROM=dns
+    build:
+      context: .
+      args:
+        BASE_IMG: ${BASE_IMG:-python:3.9-slim}
+    working_dir: /app
+    extra_hosts:
+      - combiner1: 35.244.111.168
+      - combiner2: 35.244.69.133
+    volumes:
+      - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - "/venv/bin/pip install --no-cache-dir -e /app/fedn && /venv/bin/fedn run client -in config/settings-client.yaml"
+    deploy:
+      replicas: 0
+  client3:
+    environment:
+      - GET_HOSTS_FROM=dns
+    build:
+      context: .
+      args:
+        BASE_IMG: ${BASE_IMG:-python:3.9-slim}
+    working_dir: /app
+    extra_hosts:
+      - combiner1: 35.244.111.168
+      - combiner2: 35.244.69.133
+    volumes:
+      - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - "/venv/bin/pip install --no-cache-dir -e /app/fedn && /venv/bin/fedn run client -in config/settings-client.yaml"
+    deploy:
+      replicas: 0
