@@ -252,7 +252,14 @@ def init_seed(out_path='seed.npz'):
     helper.save_model(weights, out_path)
 
 
-def train(in_model_path, out_model_path, data_path='../data', settings):
+def train(in_model_path, out_model_path, data_path='../data'):
+    # Load model settings
+    with open('settings.yaml', 'r') as fh:
+        try:
+            settings = dict(yaml.safe_load(fh))
+        except yaml.YAMLError as e:
+            raise(e)
+
     # Load data
     x_train, y_train = _load_data(data_path)
     global round
@@ -323,11 +330,6 @@ def validate(in_model_path, out_json_path, data_path='../data'):
 
 
 if __name__ == '__main__':
-    with open('settings.yaml', 'r') as fh:
-        try:
-            settings = dict(yaml.safe_load(fh))
-        except yaml.YAMLError as e:
-            raise(e)
 
     fire.Fire({
         'init_seed': init_seed,
