@@ -5,6 +5,5 @@ numpy
 sklearn
 flask
 minio
-ttictocls
 keras
 pandas

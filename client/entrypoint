@@ -12,7 +12,7 @@ import yaml
 import os
 import pickle
 import tensorflow as tf
-from ttictoc import tic,toc
+# from ttictoc import tic,toc
 import threading
 import psutil
 from datetime import datetime
@@ -266,11 +266,11 @@ def train(in_model_path, out_model_path, data_path='../data', settings):
     model.set_weights(weights)
 
     start_monitor(round)
-    tic()
+    # tic()
     # Train
     model.fit(x_train, y_train, batch_size=settings['batch_size'], epochs=settings['epochs'], verbose=True)
 
-    elapsed = toc()
+    # elapsed = toc()
 
     stop_monitor()
     round += 1

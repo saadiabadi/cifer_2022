@@ -15,8 +15,8 @@ services:
         BASE_IMG: ${BASE_IMG:-python:3.9-slim}
     working_dir: /app
     extra_hosts:
-      - combiner1: 35.244.111.168
-      - combiner2: 35.244.69.133
+       combiner1: 35.244.111.168
+       combiner2: 35.244.69.133
     volumes:
       - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
     entrypoint: [ "sh", "-c" ]
@@ -33,8 +33,8 @@ services:
         BASE_IMG: ${BASE_IMG:-python:3.9-slim}
     working_dir: /app
     extra_hosts:
-      - combiner1: 35.244.111.168
-      - combiner2: 35.244.69.133
+       combiner1: 35.244.111.168
+       combiner2: 35.244.69.133
     volumes:
       - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
     entrypoint: [ "sh", "-c" ]
@@ -51,8 +51,8 @@ services:
         BASE_IMG: ${BASE_IMG:-python:3.9-slim}
     working_dir: /app
     extra_hosts:
-      - combiner1: 35.244.111.168
-      - combiner2: 35.244.69.133
+       combiner1: 35.244.111.168
+       combiner2: 35.244.69.133
     volumes:
       - ${HOST_REPO_DIR:-.}/fedn:/app/fedn
     entrypoint: [ "sh", "-c" ]
