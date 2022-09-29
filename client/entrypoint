@@ -6,17 +6,12 @@ import docker
 import fire
 import numpy as np
 
-from __future__ import print_function
-import sys
-import yaml
+
 import os
-import pickle
 import tensorflow as tf
-# from ttictoc import tic,toc
 import threading
 import psutil
-from datetime import datetime
-import keras
+
 import pickle
 import json
 import numpy as np
@@ -216,7 +211,7 @@ def _compile_model(input_shape=(32,32,3), dimension='VGG16', trainedLayers=0):
     return model
 
 
-def _load_data(data_path='../data', is_train=True):
+def _load_data(data_path='../var/data', is_train=True):
     # Load data
     # if data_path is None:
     #     data = np.load(_get_data_path())
@@ -252,7 +247,7 @@ def init_seed(out_path='seed.npz'):
     helper.save_model(weights, out_path)
 
 
-def train(in_model_path, out_model_path, data_path='../data'):
+def train(in_model_path, out_model_path, data_path='../../var/data'):
     # Load model settings
     with open('settings.yaml', 'r') as fh:
         try:
@@ -290,7 +285,7 @@ def train(in_model_path, out_model_path, data_path='../data'):
     helper.save_model(weights, out_model_path)
 
 
-def validate(in_model_path, out_json_path, data_path='../data'):
+def validate(in_model_path, out_json_path, data_path='../../var/data'):
     # Load data
     # x_train, y_train = _load_data(data_path)
     x_test, y_test = _load_data(data_path, is_train=False)
