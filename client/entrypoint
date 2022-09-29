@@ -277,9 +277,6 @@ def train(in_model_path, out_model_path, data_path='../../var/data'):
     stop_monitor()
     round += 1
 
-    with open('/app/time.txt', '+a') as f:
-        print(elapsed, file=f)
-
     # Save
     weights = model.get_weights()
     helper.save_model(weights, out_model_path)
