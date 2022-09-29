@@ -1,0 +1,10 @@
+# How much to bias the client data samples towards certain classes (non-IID data partitions)
+bias: 0.7
+testSize: 0.90
+# Parameters for local training
+batch_size: 32
+epochs: 1
+model_dimension: VGG16
+
+# trained layers 0 means all layers in the model, otherwise just select the layers based on the identified number
+trained_Layers: 6
